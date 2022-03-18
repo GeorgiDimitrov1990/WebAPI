@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoinMapWebAPI.DAL.Entities
 {
-    class Category
+    public class Category
     {
     }
 }

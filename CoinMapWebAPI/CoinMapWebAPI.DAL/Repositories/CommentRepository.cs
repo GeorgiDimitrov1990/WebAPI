@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoinMapWebAPI.DAL.Entities
+namespace CoinMapWebAPI.DAL.Repositories
 {
-    public class Venue
+    class CommentRepository
     {
     }
 }
