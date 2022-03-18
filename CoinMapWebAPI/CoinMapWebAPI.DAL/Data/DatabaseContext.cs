@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoinMapWebAPI.DAL.Data
 {
-    public class DatabaseContext
+    public class DatabaseContext 
     {
     }
 }

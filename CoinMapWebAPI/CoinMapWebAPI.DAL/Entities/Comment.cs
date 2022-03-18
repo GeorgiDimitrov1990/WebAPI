@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace CoinMapWebAPI.DAL.Entities
 {
-    public class Comment
+    public class Comment : Entity 
     {
+        public string Description { get; set; }
+
+        public virtual Venue Venue { get; set; }
     }
 }

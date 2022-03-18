@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoinMapWebAPI.DAL.Repositories.Interfaces
 {
-    interface IRepository
+    public interface IRepository
     {
     }
 }

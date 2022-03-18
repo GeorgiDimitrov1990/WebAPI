@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CoinMapWebAPI.DAL.Entities
 {
-    public class Category
+    public class Category : Entity
     {
+        public virtual ICollection<Venue> Venues { get; set; } = new List<Venue>();
     }
 }

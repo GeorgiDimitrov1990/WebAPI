@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoinMapWebAPI.DAL.Repositories
 {
-     class AuthUserManager
+    public class AuthUserManager
     {
     }
 }
