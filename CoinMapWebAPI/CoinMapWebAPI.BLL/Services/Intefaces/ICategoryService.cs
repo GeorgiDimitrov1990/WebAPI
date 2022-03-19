@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoinMapWebAPI.BLL.Services.Intefaces
 {
-    public class ICategoryService
+    public interface ICategoryService
     {
     }
 }

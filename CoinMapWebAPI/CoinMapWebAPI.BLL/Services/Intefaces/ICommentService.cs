@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoinMapWebAPI.BLL.Services.Intefaces
 {
-    interface ICommentService
+    public interface ICommentService
     {
     }
 }
