@@ -32,7 +32,7 @@ namespace CoinMapWebAPI.Controllers
 
             var category = await _categoryService.CreateCategoryAsync(categoryName, currentUser.Id);
 
-            return CreatedAtAction(nameof(GetCategory), new { categoryId = category.Id }, _mapper.Map<Cate>(category));
+            return CreatedAtAction(nameof(GetCategory), new { categoryId = category.Id }, _mapper.Map<CategoryResponseDTO>(category));
         }
 
         [HttpGet("{categoryId}")]
