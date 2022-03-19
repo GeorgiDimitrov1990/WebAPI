@@ -8,6 +8,8 @@ namespace CoinMapWebAPI.DAL.Entities
 {
     public class Venue : Entity
     {
+        public string Name { get; set; }
+
         public string Country { get; set; }
 
         public string City { get; set; }
