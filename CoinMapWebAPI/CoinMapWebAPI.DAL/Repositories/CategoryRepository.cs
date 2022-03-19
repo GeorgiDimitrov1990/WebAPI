@@ -17,9 +17,16 @@ namespace CoinMapWebAPI.DAL.Repositories
             
         }
 
-        public Task<Category> FindByCategoryNameAsync(string categoryName)
+        public async Task<Category> FindByCategoryNameAsync(string categoryName)
         {
-            return _context.Categories.FirstOrDefaultAsync(u => u.CategoryName.Equals(categoryName));
+            return await _context.Categories.FirstOrDefaultAsync(u => u.CategoryName.Equals(categoryName));
+        }
+
+        public async Task<List<Venue>> GetAllVenuesFromCategoryAsync(int id)
+        {
+            var category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+
+            return category.Venues.ToList();
         }
     }
 }

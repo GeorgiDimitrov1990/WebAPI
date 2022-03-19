@@ -22,18 +22,20 @@ namespace CoinMapWebAPI.BLL.Services
 
         public async Task<Category> CreateCategoryAsync(string name, string creatorId)
         {
-            if (_categoryRepository.FindByCategoryNameAsync(name) != null)
+            var category = await _categoryRepository.FindByCategoryNameAsync(name);
+
+            if (category != null)
                 throw new CategoryAlreadyExistException(name);
 
-            var category = new Category()
+            var categoryToAdd = new Category()
             {
                 CategoryName = name,
                 CreatorId = creatorId
             };
 
-             await _categoryRepository.AddAsync(category);
+             await _categoryRepository.AddAsync(categoryToAdd);
 
-            return category;
+            return categoryToAdd;
         }
 
         public async Task<Category> GetCategoryByIdAsync(int id)
@@ -53,18 +55,19 @@ namespace CoinMapWebAPI.BLL.Services
 
         public async Task EditCategoryAsync(string categoryName, int categoryId)
         {
-            var category = await _categoryRepository.GetByIdAsync(categoryId);
+            var categoryToEdit = await _categoryRepository.GetByIdAsync(categoryId);
 
-            if (category == null)
+            if (categoryToEdit == null)
                 throw new CategoryNotFoundException(categoryId);
 
-            if (_categoryRepository.FindByCategoryNameAsync(categoryName) != null)
+            var categoryByName = await _categoryRepository.FindByCategoryNameAsync(categoryName);
+            if (categoryByName != null)
                 throw new CategoryAlreadyExistException(categoryName);
 
-            category.CategoryName = categoryName;
-            category.ModificationDate = DateTime.Now;
+            categoryToEdit.CategoryName = categoryName;
+            categoryToEdit.ModificationDate = DateTime.Now;
 
-            await _categoryRepository.EditAsync(category);
+            await _categoryRepository.EditAsync(categoryToEdit);
         }
 
         public async Task DeleteCategoryAsync(int categoryId)
@@ -75,6 +78,16 @@ namespace CoinMapWebAPI.BLL.Services
                 throw new CategoryNotFoundException(categoryId);
 
             await _categoryRepository.DeleteAsync(category);
+        }
+
+        public async Task<List<Venue>> GetAllVenuesFromCategoryAsync(int categoryId)
+        {
+            var category = await _categoryRepository.GetByIdAsync(categoryId);
+
+            if (category == null)
+                throw new CategoryNotFoundException(categoryId);
+
+            return await _categoryRepository.GetAllVenuesFromCategoryAsync(categoryId);
         }
     }
 }

@@ -14,5 +14,6 @@ namespace CoinMapWebAPI.BLL.Services.Intefaces
         Task<List<Category>> GetAllCategoriesAsync();
         Task EditCategoryAsync(string categoryName, int categoryId);
         Task DeleteCategoryAsync(int categoryId);
+        Task<List<Venue>> GetAllVenuesFromCategoryAsync(int categoryId);
     }
 }
