@@ -8,6 +8,8 @@ namespace CoinMapWebAPI.DAL.Entities
 {
     public class Category : Entity
     {
+        public string CategoryName { get; set; }
+
         public virtual ICollection<Venue> Venues { get; set; } = new List<Venue>();
     }
 }
