@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CoinMapWebAPI.BLL\CoinMapWebAPI.BLL.csproj" />
     <ProjectReference Include="..\CoinMapWebAPI.DAL\CoinMapWebAPI.DAL.csproj" />
     <ProjectReference Include="..\CoinMapWebAPI.Models\CoinMapWebAPI.Models.csproj" />

@@ -1,3 +1,5 @@
+using CoinMapWebAPI.BLL.Services;
+using CoinMapWebAPI.BLL.Services.Intefaces;
 using CoinMapWebAPI.Config;
 using CoinMapWebAPI.DAL.Data;
 using CoinMapWebAPI.DAL.Entities;
@@ -37,7 +39,7 @@ namespace CoinMapWebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -89,7 +91,10 @@ namespace CoinMapWebAPI
 
             // Register DAL
             services.AddTransient<IUserManager, AuthUserManager>();
-            
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+
+            // Register BLL
+            services.AddTransient<IUserService, UserService>();
 
             services.AddHttpContextAccessor();
 
