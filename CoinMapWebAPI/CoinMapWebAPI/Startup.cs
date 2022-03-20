@@ -5,6 +5,7 @@ using CoinMapWebAPI.DAL.Data;
 using CoinMapWebAPI.DAL.Entities;
 using CoinMapWebAPI.DAL.Repositories;
 using CoinMapWebAPI.DAL.Repositories.Interfaces;
+using CoinMapWebAPI.Middlewares;
 using CoinMapWebAPI.Validators;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -102,6 +103,9 @@ namespace CoinMapWebAPI
             services.AddTransient<IVenueService, VenueService>();
             services.AddTransient<ICommentService, CommentService>();
 
+            // Register Middleware
+            services.AddTransient<GlobalErrorHandlerMiddleware>();
+
             services.AddHttpContextAccessor();
 
             var builder = services.AddIdentityServer((options) =>
@@ -148,6 +152,9 @@ namespace CoinMapWebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            // Custom middleware to handle global exceptions
+            app.UseMiddleware<GlobalErrorHandlerMiddleware>();
 
             // Auth middlewares
             app.UseAuthentication();
