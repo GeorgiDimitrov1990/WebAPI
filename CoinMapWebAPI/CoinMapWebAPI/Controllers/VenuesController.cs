@@ -73,8 +73,8 @@ namespace CoinMapWebAPI.Controllers
         public async Task<IActionResult> GetComments(int venueId)
         {
             List<Comment> comments = await _venueService.GetCommnetsAsync(venueId);
-            //Have to switch to CommentResponseDTO
-            return Ok(_mapper.Map<List<CategoryResponseDTO>>(comments));
+
+            return Ok(_mapper.Map<List<CommentResponseDTO>>(comments));
         }
     }
 }

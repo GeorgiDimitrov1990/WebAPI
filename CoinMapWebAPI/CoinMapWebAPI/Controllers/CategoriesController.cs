@@ -12,13 +12,13 @@ namespace CoinMapWebAPI.Controllers
 {
     [Route("api/category")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly ICategoryService _categoryService;
         private readonly IUserService _userService;
 
-        public CategoryController(IMapper mapper, ICategoryService categoryService, IUserService userService)
+        public CategoriesController(IMapper mapper, ICategoryService categoryService, IUserService userService)
         {
             _mapper = mapper;
             _categoryService = categoryService;
