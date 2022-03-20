@@ -1,5 +1,6 @@
 ﻿using CoinMapWebAPI.BLL.Services.Exceptions.AlreadyExist;
 using CoinMapWebAPI.BLL.Services.Exceptions.NotFound;
+using CoinMapWebAPI.BLL.Services.Intefaces;
 using CoinMapWebAPI.DAL.Entities;
 using CoinMapWebAPI.DAL.Repositories.Interfaces;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CoinMapWebAPI.BLL.Services
 {
-    public class VenueService
+    public class VenueService : IVenueService
     {
         private readonly IVenueRepository _venueRepository;
         private readonly ICategoryRepository _categoryRepository;
@@ -67,6 +68,12 @@ namespace CoinMapWebAPI.BLL.Services
         {
             var venueToEdit = await this.GetVenueByIdAsync(venueId);
             var category = await _categoryRepository.GetByIdAsync(categoryId);
+
+            var venueByName = await _venueRepository.FindByVenueNameAsync(venue.Name);
+
+            if (venueByName != null && venueByName.Id != venueToEdit.Id)
+                throw new VenueAlreadyExistException(venue.Name);
+
 
             venueToEdit.ModificationDate = DateTime.Now;
             venueToEdit.Name = string.IsNullOrEmpty(venue.Name) ? venueToEdit.Name : venue.Name;

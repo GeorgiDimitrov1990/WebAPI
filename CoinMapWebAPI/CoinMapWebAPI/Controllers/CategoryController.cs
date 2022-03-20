@@ -25,7 +25,7 @@ namespace CoinMapWebAPI.Controllers
             _userService = userService;
         }
 
-        [HttpPost("{categoryName}")]
+        [HttpPost]
         public async Task<IActionResult> CreateCategory(string categoryName)
         {
             var currentUser = await _userService.GetCurrentUserAsync(User);
@@ -68,11 +68,11 @@ namespace CoinMapWebAPI.Controllers
         }
 
         [HttpGet("{categoryId}/venues")]
-        public async Task<IActionResult> GetAllVenuesFromCategory(int categoryId)
+        public async Task<IActionResult> GetVenues(int categoryId)
         {
             List<Venue> venues = await _categoryService.GetAllVenuesFromCategoryAsync(categoryId);
 
-            return Ok(_mapper.Map<List<CategoryResponseDTO>>(venues));
+            return Ok(_mapper.Map<List<VenueResponseDTO>>(venues));
         }
     }
 }

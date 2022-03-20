@@ -93,10 +93,12 @@ namespace CoinMapWebAPI
             services.AddTransient<IUserManager, AuthUserManager>();
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IVenueRepository, VenueRepository>();
 
             // Register BLL
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IVenueService, VenueService>();
 
             services.AddHttpContextAccessor();
 
