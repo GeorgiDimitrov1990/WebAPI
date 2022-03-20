@@ -10,5 +10,6 @@ namespace CoinMapWebAPI.DAL.Repositories.Interfaces
     public interface IVenueRepository : IRepository<Venue>
     {
         Task<Venue> FindByVenueNameAsync(string venueName);
+        Task<List<Comment>> GetCommentsAsync(int venueId);
     }
 }
