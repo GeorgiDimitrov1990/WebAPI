@@ -3,16 +3,15 @@ using CoinMapWebAPI.BLL.Services.Intefaces;
 using CoinMapWebAPI.DAL.Entities;
 using CoinMapWebAPI.Models.DTO.Requests.Venue;
 using CoinMapWebAPI.Models.DTO.Responses;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CoinMapWebAPI.Controllers
 {
     [Route("api/venues")]
+    [Authorize]
     [ApiController]
     public class VenuesController : ControllerBase
     {
@@ -54,7 +53,7 @@ namespace CoinMapWebAPI.Controllers
         }
 
         [HttpPut("{venueId}")]
-        public async Task<IActionResult> EditCategory(EditVenueRequestDTO venue, int venueId)
+        public async Task<IActionResult> EditVenue(EditVenueRequestDTO venue, int venueId)
         {
             await _venueService.EditVenueAsync(_mapper.Map<Venue>(venue), venueId, venue.CategoryId);
 

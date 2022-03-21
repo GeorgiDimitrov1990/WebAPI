@@ -3,6 +3,7 @@ using CoinMapWebAPI.BLL.Services.Intefaces;
 using CoinMapWebAPI.DAL.Entities;
 using CoinMapWebAPI.Models.DTO.Requests.Comment;
 using CoinMapWebAPI.Models.DTO.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 namespace CoinMapWebAPI.Controllers
 {
     [Route("api/comments")]
+    [Authorize]
     [ApiController]
     public class CommentsController : ControllerBase
     {

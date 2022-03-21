@@ -2,6 +2,7 @@
 using CoinMapWebAPI.BLL.Services.Intefaces;
 using CoinMapWebAPI.DAL.Entities;
 using CoinMapWebAPI.Models.DTO.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace CoinMapWebAPI.Controllers
 {
     [Route("api/category")]
+    [Authorize(Roles = "Admin")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
