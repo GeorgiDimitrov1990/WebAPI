@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CoinMapWebAPI.BLL.Services.Intefaces;
 using CoinMapWebAPI.DAL.Entities;
+using CoinMapWebAPI.Models.DTO.Requests.Category;
 using CoinMapWebAPI.Models.DTO.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace CoinMapWebAPI.Controllers
 {
     [Route("api/category")]
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
@@ -27,14 +28,15 @@ namespace CoinMapWebAPI.Controllers
             _userService = userService;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(string categoryName)
+        public async Task<IActionResult> CreateCategory(CreateCategoryRequestDTO category)
         {
             var currentUser = await _userService.GetCurrentUserAsync(User);
 
-            var category = await _categoryService.CreateCategoryAsync(categoryName, currentUser.Id);
+            var createdCategory = await _categoryService.CreateCategoryAsync(category.CategoryName, currentUser.Id);
 
-            return CreatedAtAction(nameof(GetCategory), new { categoryId = category.Id }, _mapper.Map<CategoryResponseDTO>(category));
+            return CreatedAtAction(nameof(GetCategory), new { categoryId = createdCategory.Id }, _mapper.Map<CategoryResponseDTO>(createdCategory));
         }
 
         [HttpGet("{categoryId}")]
@@ -53,14 +55,16 @@ namespace CoinMapWebAPI.Controllers
             return Ok(_mapper.Map<List<CategoryResponseDTO>>(categories));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{categoryId}")]
-        public async Task<IActionResult> EditCategory(int categoryId, string categoryName)
+        public async Task<IActionResult> EditCategory(int categoryId, EditCategoryRequestDTO category)
         {
-            await _categoryService.EditCategoryAsync(categoryName, categoryId);
+            await _categoryService.EditCategoryAsync(category.CategoryName, categoryId);
 
             return Ok();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{categoryId}")]
         public async Task<IActionResult> DeleteCategory(int categoryId)
         {

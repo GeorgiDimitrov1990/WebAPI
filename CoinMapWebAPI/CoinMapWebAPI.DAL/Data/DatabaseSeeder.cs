@@ -56,6 +56,112 @@ namespace CoinMapWebAPI.DAL.Data
                     IdentityUserRole<string> identityAdminUserRole = new IdentityUserRole<string>()
                     { RoleId = adminRole.Id, UserId = admin.Id };
 
+                    var trezorRetailer = new Category() { CategoryName = "Trezor Retailer" };
+                    var atm = new Category() { CategoryName = "ATM" };
+                    var attraction = new Category() { CategoryName = "Attraction" };
+                    var cafe = new Category() { CategoryName = "Cafe" };
+                    var food = new Category() { CategoryName = "Food" };
+                    var grocery = new Category() { CategoryName = "Grocey" };
+                    var lodging = new Category() { CategoryName = "Lodging" };
+                    var nightlife = new Category() { CategoryName = "Nightlife" };
+                    var shopping = new Category() { CategoryName = "Shopping" };
+                    var sports = new Category() { CategoryName = "Sports" };
+                    var transport = new Category() { CategoryName = "Transport" };
+
+                    context.Categories.Add(trezorRetailer);
+                    context.Categories.Add(atm);
+                    context.Categories.Add(attraction);
+                    context.Categories.Add(cafe);
+                    context.Categories.Add(food);
+                    context.Categories.Add(grocery);
+                    context.Categories.Add(lodging);
+                    context.Categories.Add(nightlife);
+                    context.Categories.Add(shopping);
+                    context.Categories.Add(transport);
+
+                    var atm1 = new Venue()
+                    {
+                        Category = atm,
+                        Name = "Bitcoin ATM @ Father and Sons",
+                        City = "Sofia",
+                        Country = "Bulgaria",
+                        Address = "bul. Stefan Stambolov 34"
+                    };
+
+                    var atm2 = new Venue()
+                    {
+                        Category = atm,
+                        Name = "One And All",
+                        City = "Sofia",
+                        Country = "Bulgaria",
+                        Address = "Tsar Samul 11"
+                    };
+
+                    var food1 = new Venue()
+                    {
+                        Category = food,
+                        Name = "Pizzeria OroStube",
+                        City = "Varna",
+                        Country = "Bulgaria",
+                        Address = "Ekzarh Yosif 11"
+                    };
+
+                    var food2 = new Venue()
+                    {
+                        Category = food,
+                        Name = "Alice Homemade",
+                        City = "Varna",
+                        Country = "Bulgaria",
+                        Address = "Tsar Simeno 9"
+                    };
+
+                    var cafe1 = new Venue()
+                    {
+                        Category = cafe,
+                        Name = "Nova Rosti",
+                        City = "Burgas",
+                        Country = "Bulgaria",
+                        Address = "Yanko Komitov 12"
+                    };
+
+                    var cafe2 = new Venue()
+                    {
+                        Category = cafe,
+                        Name = "Happy Bar and Grill",
+                        City = "Burgas",
+                        Country = "Bulgaria",
+                        Address = "Aleko Bogoridi 32"
+                    };
+
+                    var shopping1 = new Venue()
+                    {
+                        Category = shopping,
+                        Name = "Stack-Tech Computer Repair",
+                        City = "Plovdiv",
+                        Country = "Bulgaria",
+                        Address = "Peyo Yavorov 33"
+                    };
+
+                    var shopping2 = new Venue()
+                    {
+                        Category = shopping,
+                        Name = "Billa",
+                        City = "Plovdiv",
+                        Country = "Bulgaria",
+                        Address = "Hristo Batev 18"
+                    };
+
+                    context.Venues.Add(atm1);
+                    context.Venues.Add(atm2);
+                    context.Venues.Add(food1);
+                    context.Venues.Add(food2);
+                    context.Venues.Add(cafe1);
+                    context.Venues.Add(cafe2);
+                    context.Venues.Add(shopping1);
+                    context.Venues.Add(shopping2);
+
+
+
                     context.Roles.Add(adminRole);
                     context.Roles.Add(regularRole);
 
