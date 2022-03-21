@@ -6,6 +6,7 @@ using CoinMapWebAPI.DAL.Entities;
 using CoinMapWebAPI.DAL.Repositories;
 using CoinMapWebAPI.DAL.Repositories.Interfaces;
 using CoinMapWebAPI.Middlewares;
+using CoinMapWebAPI.Policies.Requirements;
 using CoinMapWebAPI.Validators;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -119,7 +120,20 @@ namespace CoinMapWebAPI
             builder.AddResourceOwnerValidator<PasswordValidator>();
 
             services
-                .AddAuthorization()
+                .AddAuthorization(options => 
+                {
+                    options.AddPolicy("CommentCreatorOrAdmin", policyBuilder =>
+                    {
+                        policyBuilder.RequireAuthenticatedUser();
+                        policyBuilder.AddRequirements(new CommentCreatorOrAdminRequirement());
+                    });
+
+                    options.AddPolicy("VenueCreatorOrAdmin", policyBuilder =>
+                    {
+                        policyBuilder.RequireAuthenticatedUser();
+                        policyBuilder.AddRequirements(new VenueCreatorOrAdminRequirement());
+                    });
+                })
                 .AddAuthentication(options =>
                 {
                     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;

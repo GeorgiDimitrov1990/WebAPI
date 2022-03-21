@@ -52,6 +52,7 @@ namespace CoinMapWebAPI.Controllers
             return Ok(_mapper.Map<List<VenueResponseDTO>>(venues));
         }
 
+        [Authorize (Policy = "VenueCreatorOrAdmin")]
         [HttpPut("{venueId}")]
         public async Task<IActionResult> EditVenue(EditVenueRequestDTO venue, int venueId)
         {
@@ -60,8 +61,9 @@ namespace CoinMapWebAPI.Controllers
             return Ok();
         }
 
+        [Authorize(Policy = "VenueCreatorOrAdmin")]
         [HttpDelete("{venueId}")]
-        public async Task<IActionResult> DeleteCategory(int venueId)
+        public async Task<IActionResult> DeleteVenue(int venueId)
         {
             await _venueService.DeleteVenueAsync(venueId);
 

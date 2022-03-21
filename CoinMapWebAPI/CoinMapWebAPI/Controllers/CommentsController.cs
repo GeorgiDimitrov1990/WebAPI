@@ -45,6 +45,7 @@ namespace CoinMapWebAPI.Controllers
             return Ok(_mapper.Map<CommentResponseDTO>(comment));
         }
 
+        [Authorize (Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -53,6 +54,7 @@ namespace CoinMapWebAPI.Controllers
             return Ok(_mapper.Map<List<CommentResponseDTO>>(comments));
         }
 
+        [Authorize (Policy = "CommentCreatorOrAdmin")]
         [HttpPut("{commentId}")]
         public async Task<IActionResult> EditComment(int commentId, EditCommentRequestDTO comment)
         {
@@ -61,6 +63,7 @@ namespace CoinMapWebAPI.Controllers
             return Ok();
         }
 
+        [Authorize(Policy = "CommentCreatorOrAdmin")]
         [HttpDelete("{commentId}")]
         public async Task<IActionResult> DeleteComment(int commentId)
         {
