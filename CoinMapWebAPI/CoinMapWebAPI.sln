@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMapWebAPI", "CoinMapWebAPI\CoinMapWebAPI.csproj", "{5E4591D4-B168-47E6-9FBB-7116B7EBA8EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinMapWebAPI", "CoinMapWebAPI\CoinMapWebAPI.csproj", "{5E4591D4-B168-47E6-9FBB-7116B7EBA8EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMapWebAPI.DAL", "CoinMapWebAPI.DAL\CoinMapWebAPI.DAL.csproj", "{40F3F328-4138-4AA3-A194-A435DB6A1604}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinMapWebAPI.DAL", "CoinMapWebAPI.DAL\CoinMapWebAPI.DAL.csproj", "{40F3F328-4138-4AA3-A194-A435DB6A1604}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMapWebAPI.BLL", "CoinMapWebAPI.BLL\CoinMapWebAPI.BLL.csproj", "{0989B855-0DE0-416F-B848-8CC53C8E0853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinMapWebAPI.BLL", "CoinMapWebAPI.BLL\CoinMapWebAPI.BLL.csproj", "{0989B855-0DE0-416F-B848-8CC53C8E0853}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMapWebAPI.Models", "CoinMapWebAPI.Models\CoinMapWebAPI.Models.csproj", "{C05AE4F1-2562-4925-A594-81BEED33DD1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinMapWebAPI.Models", "CoinMapWebAPI.Models\CoinMapWebAPI.Models.csproj", "{C05AE4F1-2562-4925-A594-81BEED33DD1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F8188D24-0EEE-4803-A250-2BA87FBC67CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMapWebAPI.BLL.Test", "CoinMapWebAPI.BLL.Test\CoinMapWebAPI.BLL.Test.csproj", "{0EA0F391-8B12-4267-8C1B-31FC5A3E8F47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +37,16 @@ Global
 		{C05AE4F1-2562-4925-A594-81BEED33DD1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C05AE4F1-2562-4925-A594-81BEED33DD1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C05AE4F1-2562-4925-A594-81BEED33DD1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EA0F391-8B12-4267-8C1B-31FC5A3E8F47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EA0F391-8B12-4267-8C1B-31FC5A3E8F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EA0F391-8B12-4267-8C1B-31FC5A3E8F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EA0F391-8B12-4267-8C1B-31FC5A3E8F47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0EA0F391-8B12-4267-8C1B-31FC5A3E8F47} = {F8188D24-0EEE-4803-A250-2BA87FBC67CA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB26B30B-6B8F-4B0B-8195-1DE3543D2922}
