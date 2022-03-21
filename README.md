@@ -1,10 +1,7 @@
 # WebAPI
 Instructions on obtaining token
 
-Initial admin user:
-username "admin"
-password "adminpass"
-email = "admin@coinmapwebapi.com"
+Initial admin user: username: "admin" ,password: "adminpass", email: "admin@coinmapwebapi.com"
 
 1. Run the application.
 2. Choose login endpoint and insert your credentials.
